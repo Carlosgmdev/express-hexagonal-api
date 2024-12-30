@@ -1,8 +1,6 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import routes from './infrastructure/routes';
 import errorMiddleware from './infrastructure/middlewares/error.middleware';
-import { error } from 'console';
 
 
 export default class App {
@@ -14,14 +12,8 @@ export default class App {
 
     constructor() {
         this.app = express();
-        this.configure();
         this.initializeMiddlewares();
         this.initializeRoutes();
-    }
-
-
-    private configure(): void {
-        dotenv.config();
     }
 
 
