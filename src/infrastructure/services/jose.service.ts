@@ -3,6 +3,7 @@ import jwtConfig from "../config/jtw.config";
 import HttpException from "../errors/http-exception.error";
 import bcrypt from "bcrypt";
 import JwtService from "../../domain/auth/jwt-service.interface";
+import { StatusCodes } from "http-status-codes";
 
 
 export default class JoseService implements JwtService {
@@ -27,11 +28,11 @@ export default class JoseService implements JwtService {
                 audience: jwtConfig.audience
             });
             if (!payload.userId || typeof payload.userId !== 'string') {
-                throw new HttpException(401, 'Invalid token payload');
+                throw new HttpException(StatusCodes.UNAUTHORIZED, 'Invalid token');
             }
             return payload.userId;
         } catch (error) {
-            throw new HttpException(401, 'Invalid token');
+            throw new HttpException(StatusCodes.UNAUTHORIZED, 'Invalid token');
         }
     }
 
