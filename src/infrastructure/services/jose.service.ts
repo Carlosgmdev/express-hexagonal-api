@@ -1,7 +1,6 @@
 import { jwtVerify, SignJWT } from "jose";
 import jwtConfig from "../config/jtw.config";
 import HttpException from "../errors/http-exception.error";
-import bcrypt from "bcrypt";
 import JwtService from "../../domain/auth/jwt-service.interface";
 import { StatusCodes } from "http-status-codes";
 
